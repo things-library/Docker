@@ -1,8 +1,8 @@
-#########################################
+# ====================================================================
 # POSTGRESQL
-#########################################
-version: "3.7"
-
+# ====================================================================
+# Connection String:  Server=localhost;Port=5432;Database=test;User Id=user;Password=Test123!;
+# ====================================================================
 services:
   postgres:
     image: postgres:latest
@@ -10,16 +10,15 @@ services:
     restart: unless-stopped
     ports:
        - 5432:5432
-      #- 5433:5432
     healthcheck:
-      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "admin" ]
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "user" ]
       timeout: 45s
       interval: 10s
       retries: 10    
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=wgc-development
+      - POSTGRES_DB=test
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=Test123!
       - PGDATA=/var/lib/postgresql/data/pgdata    
     volumes:
       - ./volumes/data:/var/lib/postgresql/data

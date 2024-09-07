@@ -1,6 +1,8 @@
-#########################################
+# ====================================================================
 # MSSQL
-#########################################
+# ====================================================================
+# Connection String:  Server=localhost;User Id=sa;Password=Test123!
+# ====================================================================
 services:
   mssql:
     image: 'mcr.microsoft.com/mssql/server:2022-latest'
@@ -9,9 +11,9 @@ services:
     ports:
       - 1433:1433
     environment:
-      TZ: America/Chicago
-      MSSQL_SA_PASSWORD: SSoftware7!
-      ACCEPT_EULA: Y
+      - TZ=America/Chicago
+      - MSSQL_SA_PASSWORD=Test123!
+      - ACCEPT_EULA=Y
     volumes:      
       - ./volumes/backup:/var/opt/mssql/backup
 

@@ -1,8 +1,8 @@
-#########################################
+# ====================================================================
 # RABBITMQ
-#########################################
-version: "3.7"
-
+# ====================================================================
+# Connection String:  
+# ====================================================================
 services:
   rabbitmq:
     image: rabbitmq:3.9-management-alpine
@@ -13,8 +13,8 @@ services:
     restart: unless-stopped    
     environment:
       TZ: America/Chicago
-      RABBITMQ_DEFAULT_USER: ${APP_USER}
-      RABBITMQ_DEFAULT_PASS: ${APP_PASS}
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: Test123!
     ports:
       - 5671:5671
       - 5672:5672

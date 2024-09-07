@@ -1,14 +1,11 @@
-#########################################
+# ====================================================================
 # Azurite - Azure Storage Emlator
-#########################################
-version: "3.7"
-  
+# ====================================================================
 services:
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite:latest
     container_name: azurite
     restart: unless-stopped
-    user: 1000:1000
     ports:
       - 10000:10000
       - 10001:10001
@@ -17,5 +14,3 @@ services:
       - TZ=America/Chicago
     volumes:      
       - ./volumes/data:/data
-
-# docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite

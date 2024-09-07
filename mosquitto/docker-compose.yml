@@ -1,13 +1,12 @@
-#########################################
+# ====================================================================
 # Mosquitto
-#########################################
-version: "3.7"
-
+# ====================================================================
+# Connection String: 
+# ====================================================================
 services:
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
-    user: 1000:1000    
     restart: unless-stopped
     hostname: mqtt   
     network_mode: host
@@ -16,11 +15,8 @@ services:
       - 8883:8883
       - 9001:9001
     environment:
-      TZ: America/Chicago
+      - TZ=America/Chicago
     volumes:      
       - ./config:/mosquitto/config
       - ./volumes/data:/mosquitto/data
       - ./volumes/log:/mosquitto/log
-
-# docker-compose exec mosquitto mosquitto_passwd -c /mosquitto/config/mosquitto.passwd mark
-# docker-compose exec mosquitto mosquitto_passwd -b /mosquitto/config/mosquitto.passwd mqtt <password here>
