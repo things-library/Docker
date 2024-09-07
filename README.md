@@ -1,5 +1,6 @@
 # Docker
-docker-compose scripts used for various integration testing
+
+This repository is the various docker-compose scripts used for various integration testing to speed up testing purposes so that test containers don't have to be constantly stood up and destroyed.
 
 | Image | Description |
 | -- | -- |
