@@ -1,0 +1,32 @@
+#########################################
+# MongoDB
+#########################################
+version: "3.7"
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+    - '27017:27017'
+    environment:
+      TZ: America/Chicago
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: Test1234
+    volumes:      
+    - ./volumes/data/db:/data/db
+    
+  # Connection String: mongodb://admin:Test1234@localhost:27017/
+
+  # mongo-express:
+  #   image: mongo-express
+  #   container_name: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: mark
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: 177370
+  #     ME_CONFIG_MONGODB_URL: mongodb://mark:177370@mongo:27017/

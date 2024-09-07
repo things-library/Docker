@@ -1,0 +1,25 @@
+#########################################
+# POSTGRESQL
+#########################################
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgresql
+    restart: unless-stopped
+    ports:
+       - 5432:5432
+      #- 5433:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "admin" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10    
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=wgc-development
+      - PGDATA=/var/lib/postgresql/data/pgdata    
+    volumes:
+      - ./volumes/data:/var/lib/postgresql/data

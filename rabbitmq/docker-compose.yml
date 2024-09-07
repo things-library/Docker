@@ -1,0 +1,26 @@
+#########################################
+# RABBITMQ
+#########################################
+version: "3.7"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: 'rabbitmq'    
+    user: 1000:1000
+    hostname: messages
+    network_mode: host
+    restart: unless-stopped    
+    environment:
+      TZ: America/Chicago
+      RABBITMQ_DEFAULT_USER: ${APP_USER}
+      RABBITMQ_DEFAULT_PASS: ${APP_PASS}
+    ports:
+      - 5671:5671
+      - 5672:5672
+      - 15671:15671
+      - 15672:15672
+    volumes:
+      - ./volumes/data/:/var/lib/rabbitmq/mnesia
+      - ./volumes/log/:/var/log/rabbitmq/    
+      - ./plugins.conf:/etc/rabbitmq/enabled_plugins
