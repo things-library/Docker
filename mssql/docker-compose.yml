@@ -1,7 +1,7 @@
 # ====================================================================
 # MSSQL
 # ====================================================================
-# Connection String:  Server=localhost;User Id=sa;Password=Test123!
+# Connection String:  Server=localhost;Database=test;User Id=sa;Password=Test123!;TrustServerCertificate=True
 # ====================================================================
 services:
   mssql:
